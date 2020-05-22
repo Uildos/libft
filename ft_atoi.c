@@ -1,37 +1,27 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ebresser <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/15 16:47:01 by ebresser          #+#    #+#             */
-/*   Updated: 2020/02/17 17:16:27 by ebresser         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+# include "libft.h"
 
-#include "libft.h"
-
-int			ft_atoi(const char *str)
+int	ft_atoi(const char *str)
 {
-	int			i;
-	int			signal;
-	long int	n;
+	int i;
+	long	int n;
+	int v;
 
-	signal = 1;
 	i = 0;
 	n = 0;
-	while (ft_isspace(str[i]))
+	v = 1;
+	while (str[i] == ' ' || str[i] == '\n' || str[i] == '\t' ||
+			str[i] == '\v' || str[i] == '\f' || str[i] == '\r')
 		i++;
 	if (str[i] == '-' || str[i] == '+')
 	{
-		if (str[i++] == '-')
-			signal = -1;
-	}
-	while (ft_isdigit(str[i]))
-	{
-		n = n * 10 + (str[i] - '0');
+		if (str[i] == '-')
+			v = -1;
 		i++;
 	}
-	return (n * signal);
+	while ((str[i] != '\0') && str[i] <= '9' && str[i] >= '0')
+	{
+		n = n * 10 + str[i] - '0';
+		i++;
+	}
+	return (n * v);
 }

@@ -1,67 +1,43 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ebresser <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/29 08:57:53 by ebresser          #+#    #+#             */
-/*   Updated: 2020/03/13 15:22:35 by ebresser         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+# include "libft.h"
 
-#include "libft.h"
-
-static int			number_of_digits(int n)
+char	*strcopy(char *dest,const char *src, size_t size)
 {
-	int div;
-	int len;
+	size_t	n;
 
-	len = 1;
-	div = n / 10;
-	while (div != 0)
+	n = 0;
+	if (!src || !dest)
+		return(0);
+	if (size != 0)
 	{
-		div = div / 10;
-		len++;
-	}
-	return (len);
-}
-
-static unsigned int	modulo(int n)
-{
-	unsigned int modulo;
-
-	if (n < 0)
-		modulo = -n;
-	else
-		modulo = n;
-	return (modulo);
-}
-
-char				*ft_itoa(int n)
-{
-	char			*a;
-	int				len;
-	unsigned int	n_maior;
-
-	len = number_of_digits(n) + 1;
-	if (n < 0)
-		len++;
-	if (!(a = (char*)malloc(len * sizeof(char))))
-		return (NULL);
-	else
-	{
-		n_maior = modulo(n);
-		if (n < 0)
-			a[0] = '-';
-		a[len - 1] = '\0';
-		while ((n_maior / 10) != 0 && len > 1)
+		while ((n < size -1) && (src[n] != '\0'))
 		{
-			a[len - 2] = '0' + (n_maior % 10);
-			n_maior = n_maior / 10;
-			len--;
+			dest[n] = src[n];
+			n++;
 		}
-		a[len - 2] = '0' + (n_maior % 10);
+		dest[n] = '\0';
 	}
-	return (a);
+	return (dest);
+}
+char *ft_itoa(int n)
+{
+	char	*str;
+
+	if (!(str = (char *)malloc(sizeof(char) * 2)))
+		return (NULL);
+	if (n == -2147483648)
+		return (strcopy(str, "-2147483648", 12));
+	if (n < 0)
+	{
+		str[0] = '-';
+		str[1] = '\0';
+		str = ft_strjoin(str, ft_itoa(-n));
+	}
+	else if (n >= 10)
+		str = ft_strjoin(ft_itoa(n / 10), ft_itoa(n % 10));
+	else if (n < 10 && n >= 0)
+	{
+		str[0] = n + '0';
+		str[1] = '\0';
+	}
+	return (str);
 }

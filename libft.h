@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ebresser <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/27 17:51:07 by ebresser          #+#    #+#             */
-/*   Updated: 2020/04/29 00:16:24 by ebresser         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef LIBFT_H
 # define LIBFT_H
 
@@ -18,6 +6,7 @@
 # include <string.h>
 # include <ctype.h>
 # include <unistd.h>
+# include <bsd/string.h>
 
 typedef struct		s_list
 {
@@ -65,8 +54,8 @@ char				*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 
 char				**ft_split(char const *s, char c);
 
-int					ft_toupper(int c);
-int					ft_tolower(int c);
+int				ft_toupper(int c);
+int				ft_tolower(int c);
 
 t_list				*ft_lstnew(void *content);
 void				ft_lstadd_front(t_list **lst, t_list *new);

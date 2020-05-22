@@ -1,46 +1,31 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ebresser <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/31 11:16:12 by ebresser          #+#    #+#             */
-/*   Updated: 2020/03/12 17:52:35 by ebresser         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+# include "libft.h"
 
-#include "libft.h"
-
-static void	copylen(char *scpy, const char *s)
+char *ft_strjoin(char const *s1, char const *s2)
 {
-	int	i;
-
-	if (!s)
-		return ;
-	i = 0;
-	while (s[i] != '\0')
-	{
-		scpy[i] = s[i];
-		i++;
-	}
-}
-
-char		*ft_strjoin(char const *s1, char const *s2)
-{
-	size_t	len;
-	size_t	k;
-	char	*s;
+	char	*str;
+	size_t	i;
+	size_t	len_s1;
+	size_t	len_s2;
 
 	if (!s1 || !s2)
 		return (NULL);
-	len = ft_strlen(s1) + ft_strlen(s2) + 1;
-	if (!(s = (char*)malloc(len * sizeof(char))))
-		return (NULL);
-	copylen(s, s1);
-	k = ft_strlen(s1);
-	copylen(&s[k], s2);
-	k = k + ft_strlen(s2);
-	s[k] = '\0';
-	return (s);
+	len_s1 = ft_strlen(s1);
+	len_s2 = ft_strlen(s2);
+	str = (char *)malloc((len_s1 + len_s2) * sizeof(char) + 1);
+	if (!str)
+		return(NULL);
+	i = 0;
+	while( i < len_s1)
+	{
+		str[i] = s1[i];
+		i++;
+	}
+	while( i < len_s1 + len_s2)
+	{
+		str[i] = s2[i - len_s1];
+		i++;
+	}
+	str[i] = '\0';
+	return(str);
 }
+

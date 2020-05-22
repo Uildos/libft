@@ -1,2 +1,0 @@
-gcc -lbsd main_strlcpy.c ft_strlen.c ft_strlcpy.c libft.h 
-Foi necessário adicionar -libsd e # include BSD/string.h (no libft.h) para ustilizar funcções não padrões
