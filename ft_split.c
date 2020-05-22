@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: usoares- <usoares-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/05/22 12:52:16 by usoares-          #+#    #+#             */
+/*   Updated: 2020/05/22 12:52:24 by usoares-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 # include "libft.h"
 
 static int wmeter(char const *s, char c)
@@ -41,7 +53,7 @@ char	**ft_split(char const *s, char c)
 	char	**splits;
 	size_t	j;
 	int	w_in;
-	
+
 	if (!s || !(splits = malloc((wmeter(s, c) + 1) * sizeof(char *))))
 		return (0);
 

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: usoares- <usoares-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/05/22 12:56:05 by usoares-          #+#    #+#             */
+/*   Updated: 2020/05/22 12:56:08 by usoares-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 # include "libft.h"
 
 char *ft_substr(char const *s, unsigned int start,size_t len)
@@ -7,7 +19,7 @@ char *ft_substr(char const *s, unsigned int start,size_t len)
 
 	if (!s)
 		return (NULL);
-	
+
 	substr = (char *)malloc(len + 1);
 	if (!substr)
 		return (NULL);
