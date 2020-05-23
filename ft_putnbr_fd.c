@@ -1,17 +1,32 @@
-#include "libft.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: usoares- <usoares-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/05/22 22:32:13 by usoares-          #+#    #+#             */
+/*   Updated: 2020/05/22 22:32:15 by usoares-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-void	ft_putnbr_fd(int nb, int fd)
+# include "libft.h"
+
+void ft_putnbr_fd(int n, int fd)
 {
-	unsigned int	nbr;
-
-	if (nb < 0)
+	
+	if (n == -2147483648)
+		ft_putstr_fd("-2147483648", fd);
+	else if (n < 0)
 	{
 		ft_putchar_fd('-', fd);
-		nbr = (unsigned int)(nb * -1);
+		ft_putnbr_fd(-n, fd);
+	}
+	else if ( n > 9) 	
+	{
+		ft_putnbr_fd(n / 10, fd);
+		ft_putchar_fd(n % 10 + '0', fd);
 	}
 	else
-		nbr = (unsigned int)nb;
-	if (nbr >= 10)
-		ft_putnbr_fd(nbr / 10, fd);
-	ft_putchar_fd((char)(nbr % 10 + 48), fd);
+		ft_putchar_fd( n  + '0', fd);
 }
