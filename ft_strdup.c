@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "libft.h"
+#include "libft.h"
 
-char *ft_strdup(const char *s)
+char	*ft_strdup(const char *s)
 {
 	size_t	i;
 	char	*cp_s;
@@ -21,7 +21,7 @@ char *ft_strdup(const char *s)
 	len = ft_strlen(s);
 	cp_s = (char *)malloc((len + 1 * sizeof(char)));
 	if (!cp_s)
-		return(NULL);
+		return (NULL);
 	i = 0;
 	while ((i < len) && (s[i] != '\0'))
 	{
@@ -30,8 +30,7 @@ char *ft_strdup(const char *s)
 	}
 	cp_s[i] = '\0';
 	if (sizeof(cp_s) == 0)
-		return(NULL);
+		return (NULL);
 	else
-		return(cp_s);
+		return (cp_s);
 }
-

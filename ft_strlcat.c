@@ -10,12 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "libft.h"
+#include "libft.h"
 
-size_t	ft_strlcat(char *dest,const char *src, size_t size)
+size_t	ft_strlcat(char *dest, const char *src, size_t size)
 {
 	size_t	n;
-	size_t len_dest;
+	size_t	len_dest;
 
 	n = 0;
 	len_dest = ft_strlen(dest);
@@ -29,4 +29,3 @@ size_t	ft_strlcat(char *dest,const char *src, size_t size)
 	dest[len_dest + n] = '\0';
 	return (len_dest + ft_strlen(src));
 }
-

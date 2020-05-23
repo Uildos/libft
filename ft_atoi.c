@@ -10,13 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "libft.h"
+#include "libft.h"
 
 int	ft_atoi(const char *str)
 {
-	int i;
-	long	int n;
-	int v;
+	int			i;
+	long int	n;
+	int			v;
 
 	i = 0;
 	n = 0;

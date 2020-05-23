@@ -10,16 +10,15 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "libft.h"
+#include "libft.h"
 
-char *ft_substr(char const *s, unsigned int start,size_t len)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char *substr;
-	unsigned	int	i;
+	char			*substr;
+	unsigned int	i;
 
 	if (!s)
 		return (NULL);
-
 	substr = (char *)malloc(len + 1);
 	if (!substr)
 		return (NULL);
@@ -30,5 +29,5 @@ char *ft_substr(char const *s, unsigned int start,size_t len)
 		i++;
 	}
 	substr[i] = '\0';
-	return(substr);
+	return (substr);
 }

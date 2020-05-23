@@ -10,27 +10,27 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "libft.h"
+#include "libft.h"
 
-static int wmeter(char const *s, char c)
+static int	wmeter(char const *s, char c)
 {
 	size_t	i;
-	int	nb_w;
+	int		nb_w;
 
 	i = 0;
 	nb_w = 0;
-	while( s[i] != '\0')
+	while (s[i] != '\0')
 	{
 		if (s[i] != c)
 		{
 			nb_w++;
-			while((s[i] != c) && (s[i] != '\0'))
+			while ((s[i] != c) && (s[i] != '\0'))
 				i++;
 		}
 		else
 			i++;
 	}
-	return(nb_w);
+	return (nb_w);
 }
 
 static char	*wfill(const char *str, int start, int finish)
@@ -46,19 +46,17 @@ static char	*wfill(const char *str, int start, int finish)
 	return (w);
 }
 
-
-char	**ft_split(char const *s, char c)
+char		**ft_split(char const *s, char c)
 {
 	size_t	i;
 	char	**splits;
 	size_t	j;
-	int	w_in;
+	int		w_in;
 
 	if (!s || !(splits = malloc((wmeter(s, c) + 1) * sizeof(char *))))
 		return (0);
-
 	if (!splits)
-		return(0);
+		return (0);
 	i = 0;
 	j = 0;
 	w_in = -1;

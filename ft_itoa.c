@@ -10,18 +10,18 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "libft.h"
+#include "libft.h"
 
-char	*strcopy(char *dest,const char *src, size_t size)
+char	*strcopy(char *dest, const char *src, size_t size)
 {
 	size_t	n;
 
 	n = 0;
 	if (!src || !dest)
-		return(0);
+		return (0);
 	if (size != 0)
 	{
-		while ((n < size -1) && (src[n] != '\0'))
+		while ((n < size - 1) && (src[n] != '\0'))
 		{
 			dest[n] = src[n];
 			n++;
@@ -30,7 +30,8 @@ char	*strcopy(char *dest,const char *src, size_t size)
 	}
 	return (dest);
 }
-char *ft_itoa(int n)
+
+char	*ft_itoa(int n)
 {
 	char	*str;
 
