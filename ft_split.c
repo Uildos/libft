@@ -46,31 +46,55 @@ static char	*wfill(const char *str, int start, int finish)
 	return (w);
 }
 
-char		**ft_split(char const *s, char c)
+static char	**splitter(char const *s, char **splits, size_t len_s, char c)
 {
 	size_t	i;
-	char	**splits;
 	size_t	j;
 	int		w_in;
 
-	if (!s || !(splits = malloc((wmeter(s, c) + 1) * sizeof(char *))))
-		return (0);
-	if (!splits)
-		return (0);
 	i = 0;
 	j = 0;
 	w_in = -1;
-	while (i <= ft_strlen(s))
+	while (i <= len_s)
 	{
 		if (s[i] != c && w_in < 0)
 			w_in = i;
-		else if ((s[i] == c || i == ft_strlen(s)) && w_in >= 0)
+		else if ((s[i] == c || i == len_s) && w_in >= 0)
 		{
 			splits[j++] = wfill(s, w_in, i);
 			w_in = -1;
 		}
 		i++;
 	}
-	splits[j] = 0;
+	splits[j] = NULL;
+	return (splits);
+}
+	
+char		**ft_split(char const *s, char c)
+{
+	char	**splits;
+	size_t	len_s;
+	int	nb_w;
+
+	if (!s)
+		return (NULL);
+	if (*s == '\0')
+		nb_w = 0;
+	else if (c == '\0')
+		nb_w = 1;
+	else
+		nb_w = wmeter(s, c);
+	if (!(splits = malloc((nb_w + 1) * sizeof(char *))))
+		return (NULL);
+	len_s = ft_strlen(s);
+	if (s == NULL)
+		splits[0] = NULL;
+	else if (c == '\0')
+	{
+		splits[0] = ft_strdup(s);
+		splits[1] = NULL;
+	}
+	else
+		splits = splitter(s, splits, len_s, c);
 	return (splits);
 }
