@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-char	*strcopy(char *dest, const char *src, size_t size)
+char		*strcopy(char *dest, const char *src, size_t size)
 {
 	size_t	n;
 
@@ -31,14 +31,36 @@ char	*strcopy(char *dest, const char *src, size_t size)
 	return (dest);
 }
 
-char	*ft_itoa(int n)
+static	int	real_len_nbr(int n)
+{
+	int div;
+	int len;
+
+	len = 1;
+	div = n / 10;
+	while (div != 0)
+	{
+		div = div / 10;
+		len++;
+	}
+	if (n < 0)
+		len++;
+	return (len);
+}
+
+char		*ft_itoa(int n)
 {
 	char	*str;
+	int		len;
 
-	if (!(str = (char *)malloc(sizeof(char) * 2)))
+	len = real_len_nbr(n);
+	if (!(str = (char *)malloc((len + 1) * sizeof(char))))
 		return (NULL);
 	if (n == -2147483648)
-		return (strcopy(str, "-2147483648", 12));
+	{
+		str = (strcopy(str, "-2147483648", 12));
+		return (str);
+	}
 	if (n < 0)
 	{
 		str[0] = '-';

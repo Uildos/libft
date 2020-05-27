@@ -19,15 +19,11 @@ OBJ = $(SRC:.c=.o)
 SRC_BONUS = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c ft_lstdelone.c \
                 ft_lstclear.c ft_lstiter.c ft_lstmap.c
 OBJ_BONUS = $(SRC_BONUS:.c=.o)
-OBJ_SO = $(SRC:.c=.o)
 FLAGS = -Wall -Wextra -Werror
 CC = gcc $(FLAGS) -c
 all : $(NAME)
 $(NAME): $(OBJ)
 	ar rc libft.a $(OBJ)
-so: $(OBJ)
-	$(CC) -fPIC $(CFLAGS) $(SRC)
-	gcc $(OBJ_SO) -shared -o libft.so $(BIN)
 clean:
 	@/bin/rm -f $(OBJ) $(OBJ_BONUS)
 fclean: clean
