@@ -61,18 +61,17 @@ char		*ft_itoa(int n)
 		str = (strcopy(str, "-2147483648", 12));
 		return (str);
 	}
+	*(str + len--) = '\0';
 	if (n < 0)
+		n = -n;
+	while (n > 0)
 	{
-		str[0] = '-';
-		str[1] = '\0';
-		str = ft_strjoin(str, ft_itoa(-n));
+		*(str + len--) = n % 10 + '0';
+		n /= 10;
 	}
-	else if (n >= 10)
-		str = ft_strjoin(ft_itoa(n / 10), ft_itoa(n % 10));
-	else if (n < 10 && n >= 0)
-	{
-		str[0] = n + '0';
-		str[1] = '\0';
-	}
+	if (len == 0 && str[1] == '\0')
+		*(str + len) = '0';
+	else if (len == 0 && str[1] != '\0')
+		*(str + len) = '-';
 	return (str);
 }
